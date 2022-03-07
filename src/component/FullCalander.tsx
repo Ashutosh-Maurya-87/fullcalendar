@@ -3,8 +3,9 @@ import React, { useState } from "react";
 import dayGridPlugin from "@fullcalendar/daygrid"; // a plugin!
 import "@fullcalendar/daygrid/main.css";
 import interactionPlugin from "@fullcalendar/interaction";
+import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 
-const FullCalander = () => {
+const FullCalander = (props: any) => {
   //   const [selectedDate, setSelectedDate] = useState("");
   const handleDateSelect = (selectInfo: any) => {
     //let title = prompt("Please enter a new title for your event");
@@ -28,15 +29,22 @@ const FullCalander = () => {
   };
   return (
     <>
-      <h1>Showing full Calendar using fullcalendar package.</h1>
-      <FullCalendar
-        plugins={[dayGridPlugin, interactionPlugin]}
-        initialView="dayGridMonth"
-        //dateClick={handleDateClick}
-        editable={true}
-        selectable={true}
-        select={handleDateSelect}
-      />
+      <Modal isOpen={props.show} toggle={props.setShow} className="m-5">
+        <ModalHeader toggle={props.setShow} style={{ marginLeft: "50px" }}>
+          Full Calendar
+        </ModalHeader>
+        <ModalBody>
+          <FullCalendar
+            plugins={[dayGridPlugin, interactionPlugin]}
+            initialView="dayGridMonth"
+            //dateClick={handleDateClick}
+            editable={true}
+            selectable={true}
+            select={handleDateSelect}
+          />
+        </ModalBody>
+        <ModalFooter></ModalFooter>
+      </Modal>
       {/* <p>{selectedDate}</p> */}
     </>
   );

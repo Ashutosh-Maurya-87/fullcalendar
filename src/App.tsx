@@ -1,12 +1,14 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import FullCalander from "./component/FullCalander";
+import CalendarShow from "./component/CalendarShow";
 
 function App() {
   return (
     <>
-      <FullCalander />
+      <div className="App">
+        <CalendarShow />
+      </div>
     </>
   );
 }
